@@ -1,7 +1,7 @@
 /**
  * Oshi (https://github.com/dblock/oshi)
  * 
- * Copyright (c) 2010 - 2015 The Oshi Project Team
+ * Copyright (c) 2010 - 2016 The Oshi Project Team
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -25,24 +25,24 @@ package oshi.software.os;
  */
 public interface OperatingSystem {
 
-	/**
-	 * Operating system family.
-	 * 
-	 * @return String.
-	 */
-	public String getFamily();
+    /**
+     * Operating system family.
+     * 
+     * @return String.
+     */
+    String getFamily();
 
-	/**
-	 * Manufacturer.
-	 * 
-	 * @return String.
-	 */
-	public String getManufacturer();
+    /**
+     * Manufacturer.
+     * 
+     * @return String.
+     */
+    String getManufacturer();
 
-	/**
-	 * Operating system version.
-	 * 
-	 * @return Version.
-	 */
-	OperatingSystemVersion getVersion();
+    /**
+     * Operating system version.
+     * 
+     * @return Version.
+     */
+    OperatingSystemVersion getVersion();
 }

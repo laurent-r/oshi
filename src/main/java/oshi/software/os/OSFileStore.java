@@ -1,7 +1,7 @@
 /**
  * Oshi (https://github.com/dblock/oshi)
  * 
- * Copyright (c) 2010 - 2015 The Oshi Project Team
+ * Copyright (c) 2010 - 2016 The Oshi Project Team
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -16,6 +16,9 @@
  */
 package oshi.software.os;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * The File System is a storage pool, device, partition, volume, concrete file
  * system or other implementation specific means of file storage. See subclasses
@@ -24,102 +27,109 @@ package oshi.software.os;
  * @author widdis[at]gmail[dot]com
  */
 public class OSFileStore {
-	private String name;
+    private static final Logger LOG = LoggerFactory.getLogger(OSFileStore.class);
 
-	private String description;
+    private String name;
 
-	private long usableSpace;
+    private String description;
 
-	private long totalSpace;
+    private long usableSpace;
 
-	/**
-	 * Creates a {@link OSFileStore} with the specified parameters.
-	 * 
-	 * @param name
-	 * @param description
-	 * @param usableSpace
-	 * @param totalSpace
-	 */
-	public OSFileStore(String name, String description, long usableSpace, long totalSpace) {
-		this.setName(name);
-		this.setDescription(description);
-		this.setUsableSpace(usableSpace);
-		this.setTotalSpace(totalSpace);
-	}
+    private long totalSpace;
 
-	/**
-	 * Name of the File System
-	 * 
-	 * @return The file system name
-	 */
-	public String getName() {
-		return this.name;
-	}
+    /**
+     * Creates a {@link OSFileStore} with the specified parameters.
+     * 
+     * @param newName
+     *            Name of the filestore
+     * @param newDescription
+     *            Description of the file store
+     * @param newUsableSpace
+     *            Available/usable bytes
+     * @param newTotalSpace
+     *            Total bytes
+     */
+    public OSFileStore(String newName, String newDescription, long newUsableSpace, long newTotalSpace) {
+        this.setName(newName);
+        this.setDescription(newDescription);
+        this.setUsableSpace(newUsableSpace);
+        this.setTotalSpace(newTotalSpace);
+        LOG.debug("Initialized OSFileStore: {}", newName);
+    }
 
-	/**
-	 * Sets the File System name
-	 * 
-	 * @param name
-	 *            The name
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
+    /**
+     * Name of the File System
+     * 
+     * @return The file system name
+     */
+    public String getName() {
+        return this.name;
+    }
 
-	/**
-	 * Description of the File System
-	 * 
-	 * @return The file system description
-	 */
-	public String getDescription() {
-		return this.description;
-	}
+    /**
+     * Sets the File System name
+     * 
+     * @param value
+     *            The name
+     */
+    public void setName(String value) {
+        this.name = value;
+    }
 
-	/**
-	 * Sets the File System description
-	 * 
-	 * @param description
-	 *            The description
-	 */
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    /**
+     * Description of the File System
+     * 
+     * @return The file system description
+     */
+    public String getDescription() {
+        return this.description;
+    }
 
-	/**
-	 * Usable space on the drive.
-	 * 
-	 * @return Usable space on the drive (in bytes)
-	 */
-	public long getUsableSpace() {
-		return this.usableSpace;
-	}
+    /**
+     * Sets the File System description
+     * 
+     * @param value
+     *            The description
+     */
+    public void setDescription(String value) {
+        this.description = value;
+    }
 
-	/**
-	 * Sets usable space on the drive.
-	 * 
-	 * @param usableSpace
-	 *            Bytes of writable space.
-	 */
-	public void setUsableSpace(long usableSpace) {
-		this.usableSpace = usableSpace;
-	}
+    /**
+     * Usable space on the drive.
+     * 
+     * @return Usable space on the drive (in bytes)
+     */
+    public long getUsableSpace() {
+        return this.usableSpace;
+    }
 
-	/**
-	 * Total space/capacity of the drive.
-	 * 
-	 * @return Total capacity of the drive (in bytes)
-	 */
-	public long getTotalSpace() {
-		return this.totalSpace;
-	}
+    /**
+     * Sets usable space on the drive.
+     * 
+     * @param value
+     *            Bytes of writable space.
+     */
+    public void setUsableSpace(long value) {
+        this.usableSpace = value;
+    }
 
-	/**
-	 * Sets the total space on the drive.
-	 * 
-	 * @param totalSpace
-	 *            Bytes of total space.
-	 */
-	public void setTotalSpace(long totalSpace) {
-		this.totalSpace = totalSpace;
-	}
+    /**
+     * Total space/capacity of the drive.
+     * 
+     * @return Total capacity of the drive (in bytes)
+     */
+    public long getTotalSpace() {
+        return this.totalSpace;
+    }
+
+    /**
+     * Sets the total space on the drive.
+     * 
+     * @param value
+     *            Bytes of total space.
+     */
+    public void setTotalSpace(long value) {
+        this.totalSpace = value;
+    }
 }

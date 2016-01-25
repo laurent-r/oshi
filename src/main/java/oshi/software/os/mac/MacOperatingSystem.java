@@ -1,7 +1,7 @@
 /**
  * Oshi (https://github.com/dblock/oshi)
  * 
- * Copyright (c) 2010 - 2015 The Oshi Project Team
+ * Copyright (c) 2010 - 2016 The Oshi Project Team
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -18,7 +18,6 @@ package oshi.software.os.mac;
 
 import oshi.software.os.OperatingSystem;
 import oshi.software.os.OperatingSystemVersion;
-import oshi.software.os.mac.local.OSVersionInfoEx;
 
 /**
  * @author alessandro[at]perucchi[dot]org
@@ -26,38 +25,38 @@ import oshi.software.os.mac.local.OSVersionInfoEx;
  */
 
 public class MacOperatingSystem implements OperatingSystem {
-	private String _family;
+    private String _family;
 
-	private OperatingSystemVersion _version = null;
+    private OperatingSystemVersion _version;
 
-	@Override
-	public OperatingSystemVersion getVersion() {
-		if (this._version == null) {
-			this._version = new OSVersionInfoEx();
-		}
-		return this._version;
-	}
+    @Override
+    public OperatingSystemVersion getVersion() {
+        if (this._version == null) {
+            this._version = new MacOSVersionInfoEx();
+        }
+        return this._version;
+    }
 
-	@Override
-	public String getFamily() {
-		if (this._family == null)
-			this._family = System.getProperty("os.name");
-		return this._family;
-	}
+    @Override
+    public String getFamily() {
+        if (this._family == null)
+            this._family = System.getProperty("os.name");
+        return this._family;
+    }
 
-	@Override
-	public String getManufacturer() {
-		return "Apple";
-	}
+    @Override
+    public String getManufacturer() {
+        return "Apple";
+    }
 
-	@Override
-	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append(getManufacturer());
-		sb.append(" ");
-		sb.append(getFamily());
-		sb.append(" ");
-		sb.append(getVersion().toString());
-		return sb.toString();
-	}
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getManufacturer());
+        sb.append(" ");
+        sb.append(getFamily());
+        sb.append(" ");
+        sb.append(getVersion().toString());
+        return sb.toString();
+    }
 }
